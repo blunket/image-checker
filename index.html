@@ -23,15 +23,35 @@
         <thead>
             <th>image</th>
             <th>file</th>
-            <th>dimensions</th>
+            <th>dimensions (pixels)</th>
             <th>max print dimensions (inches)</th>
         </thead>
-        <tr id="template">
-            <td class="image"><img></td>
-            <td class="file"><span></span></td>
-            <td class="display"><span></span></td>
-            <td class="print"><span></span></td>
-        </tr>
+        <tbody id="rows">
+            <tr class="row" id="template_row">
+                <td class="image"><img></td>
+                <td class="file"></td>
+                <td class="display"></td>
+                <td class="print"></td>
+            </tr>
+            <tr class="more" id="template_more">
+                <td colspan="100%">
+                    <table>
+                        <tr>
+                            <td>key1</td>
+                            <td>attr1</td>
+                        </tr>
+                        <tr>
+                            <td>key2</td>
+                            <td>attr2</td>
+                        </tr>
+                        <tr>
+                            <td>key3</td>
+                            <td>attr3</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
     <script

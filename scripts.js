@@ -46,13 +46,16 @@ $(function() {
                             mwc = (mwi * 2.54).toFixed(1),
                             mhc = (mhi * 2.54).toFixed(1);
 
-                        let row = $("#template").clone().removeAttr("id");
-
+                        let row = $("#template_row").clone().removeAttr("id");
                         row.find(".image").html(img);
                         row.find(".file").text(fn);
                         row.find(".display").text(img.width + " x " + img.height);
                         row.find(".print").text(mwi + " x " + mhi);
-                        row.appendTo("#results");
+
+                        let more = $("#template_more").clone().removeAttr("id");
+
+                        row.appendTo("#results #rows");
+                        more.appendTo("#results #rows");
 
                     });
 
@@ -61,5 +64,9 @@ $(function() {
             });
     }
 
+
+    $(document).on('click', '#results .row', function(e) {
+        $(this).toggleClass("expand");
+    });
 
 });

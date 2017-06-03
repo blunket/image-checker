@@ -14,6 +14,7 @@ p {
 #results {
     width: 100%;
     display: none;
+    border-collapse: collapse;
 }
 
 #results th {
@@ -25,17 +26,44 @@ p {
     color: #888;
 }
 
-#results tr:nth-of-type(even) {
-    background-color: #f0f0f0;
+#results .row {
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+#results .row:hover {
+    background-color: #eee;
+}
+
+#results .more {
+    display: none;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+}
+
+#results .more > td {
+    padding: 10px 5px 20px;
+}
+
+#results .row.expand {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+#results .row.expand + .more {
+    display: table-row;
 }
 
 #results img {
     max-width: 150px;
     height: auto;
-    max-height: 80px;
+    max-height: 50px;
 }
 
-#template {
+#template_row,
+#template_more {
     display: none;
 }
 

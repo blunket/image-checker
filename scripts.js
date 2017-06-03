@@ -46,17 +46,17 @@ $(function() {
                             mwc = (mwi * 2.54).toFixed(1),
                             mhc = (mhi * 2.54).toFixed(1);
 
-                        $("<tr>")
-                            .append( $("<td>").html(img) )
-                            .append("<td>" + fn + "</td>")
-                            .append("<td>" + img.width + " x " + img.height + "</td>")
-                            .append("<td>" + mwi + "in <em>("+ mwc +"cm)</em></td>")
-                            .append("<td>" + mhi + "in <em>("+ mhc +"cm)</em></td>")
-                            .appendTo("#results");
+                        let row = $("#template").clone().removeAttr("id");
 
+                        row.find(".image").html(img);
+                        row.find(".file").text(fn);
+                        row.find(".display").text(img.width + " x " + img.height);
+                        row.find(".print").text(mwi + " x " + mhi);
+                        row.appendTo("#results");
 
-                        $("#results").show();
-                    })
+                    });
+
+                    $("#results").show();
                 });
             });
     }

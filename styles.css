@@ -35,6 +35,10 @@ p {
     max-height: 80px;
 }
 
+#template {
+    display: none;
+}
+
 #fileselectbutton {
     display: block;
     width: 250px;

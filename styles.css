@@ -1,63 +1,55 @@
-* {
-	box-sizing: border-box;
-}
-
 body {
+    background-color: #fafafa;
     font-family: "Lato";
     padding-bottom: 34px;
 }
 
-h1, h2, p, ul {
-    text-align: center;
-    margin: 1em 0px;
-}
-
-p {
-    margin-bottom: 2em;
+label {
+    display: block;
 }
 
 #results {
-    width: 100%;
     display: none;
-    border-collapse: collapse;
-}
-
-#results th {
-    text-align: left;
-    border-bottom: 1px solid #888;
 }
 
 #results em {
     color: #888;
 }
 
-#results .row {
+#results .table-info {
     border-top: 1px solid #ccc;
     cursor: pointer;
     transition: all .2s;
 }
 
-#results .row:hover {
+#results .table-info:hover {
     background-color: #eee;
 }
 
-#results .more {
+#results .table-details {
     display: none;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
 }
 
-#results .more > td {
-    padding: 10px 5px 20px;
+#results .table-details > td {
+    padding: 0px;
+}
+#results .table-details .well {
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+#results .table-details table td {
+    padding: 3px 10px;
+}
+#results .table-details table .key {
+    font-weight: bold;
 }
 
-#results .row.expand {
+#results .table-info.expand {
     background-color: #eee;
     font-weight: bold;
 }
 
-#results .row.expand + .more {
+#results .table-info.expand + .table-details {
     display: table-row;
 }
 
@@ -65,11 +57,6 @@ p {
     max-width: 150px;
     height: auto;
     max-height: 50px;
-}
-
-#template_row,
-#template_more {
-    display: none;
 }
 
 #fileselectbutton {
@@ -97,11 +84,10 @@ p {
 
 #filedrag {
     display: none;
-    font-weight: bold;
-    text-align: center;
-    padding: 3em 0px;
-    margin: 1em;
-    border: 1px solid #ddd;
+}
+
+.panel-body {
+    display: block;
 }
 
 @keyframes dragging {

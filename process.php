@@ -3,12 +3,15 @@
 	// csrf token check: https://stackoverflow.com/questions/37912937/how-to-send-secure-ajax-requests-with-php-and-jquery
 	session_start();
 	if (empty($_SESSION['csrf_token'])) {
-	    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+		if (function_exists('random_bytes')) {
+		    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+		} else {
+		    $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(32));
+		}
 	}
 
-	$headers = apache_request_headers();
-	if (isset($headers['CsrfToken'])) {
-	    if ($headers['CsrfToken'] !== $_SESSION['csrf_token']) {
+	if (isset($_SERVER['HTTP_CSRFTOKEN'])) {
+	    if ($_SERVER['HTTP_CSRFTOKEN'] !== $_SESSION['csrf_token']) {
 	        die('Wrong CSRF token.');
 	    }
 	} else {

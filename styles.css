@@ -1,113 +1,113 @@
 body {
-    background-color: #fafafa;
-    font-family: "Lato";
-    padding-bottom: 34px;
+	background-color: #fafafa;
+	font-family: "Lato";
+	padding-bottom: 34px;
 }
 
 label {
-    display: block;
+	display: block;
 }
 
 #results {
-    display: none;
+	display: none;
 }
 
 #results em {
-    color: #888;
+	color: #888;
 }
 
 #results .table-info {
-    border-top: 1px solid #ccc;
-    cursor: pointer;
-    transition: all .2s;
+	border-top: 1px solid #ccc;
+	cursor: pointer;
+	transition: all .2s;
 }
 
 #results .table-info:hover {
-    background-color: #eee;
+	background-color: #eee;
 }
 
 #results .table-details {
-    display: none;
+	display: none;
 }
 
 #results .table-details > td {
-    padding: 0px;
+	padding: 0px;
 }
 #results .table-details .well {
-    margin-bottom: 0px;
-    border-radius: 0px;
+	margin-bottom: 0px;
+	border-radius: 0px;
 }
 #results .table-details table td {
-    padding: 3px 10px;
+	padding: 3px 10px;
 }
 #results .table-details table .key {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 #results .table-info.expand {
-    background-color: #eee;
-    font-weight: bold;
+	background-color: #eee;
+	font-weight: bold;
 }
 
 #results .table-info.expand + .table-details {
-    display: table-row;
+	display: table-row;
 }
 
 #results img {
-    max-width: 150px;
-    height: auto;
-    max-height: 50px;
+	max-width: 150px;
+	height: auto;
+	max-height: 50px;
 }
 
 #fileselectbutton {
-    display: block;
-    width: 250px;
-    height: 30px;
-    border: 1px solid #888;
-    margin: 1em auto;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    background-color: #fac;
-    transition: all .2s;
+	display: block;
+	width: 250px;
+	height: 30px;
+	border: 1px solid #888;
+	margin: 1em auto;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+	text-transform: uppercase;
+	background-color: #fac;
+	transition: all .2s;
 }
 
 #fileselectbutton:hover,
 #fileselectbutton:focus {
-    background-color: #fce;
+	background-color: #fce;
 }
 
 #fileselect {
-    display: none;
+	display: none;
 }
 
 #filedrag {
-    display: none;
+	display: none;
 }
 
 .panel-body {
-    display: block;
+	display: block;
 }
 
 @keyframes dragging {
-    0%  { background-color: #cef; }
-    100%  { background-color: #eff; }
+	0%  { background-color: #cef; }
+	100%  { background-color: #eff; }
 }
 
 #filedrag.dragging {
-    border: 1px solid #888;
-    animation: dragging .6s infinite alternate;
+	border: 1px solid #888;
+	animation: dragging .6s infinite alternate;
 }
 
 #filedrag.loading {
-    border: 1px solid #888;
-    animation: none;
-    background-color: #aca;
+	border: 1px solid #888;
+	animation: none;
+	background-color: #aca;
 }
 
 #spinner {
-    display: none;
+	display: none;
 }
 
 
@@ -135,29 +135,29 @@ label {
 }
 
 .loading #spinner {
-    display: block;
-    color: #8a8;
-    font-size: 20px;
-    margin: 100px auto;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    position: relative;
-    text-indent: -9999em;
-    -webkit-animation: spin 1.3s infinite linear;
-    animation: spin 1.3s infinite linear;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
+	display: block;
+	color: #8a8;
+	font-size: 20px;
+	margin: 100px auto;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	position: relative;
+	text-indent: -9999em;
+	-webkit-animation: spin 1.3s infinite linear;
+	animation: spin 1.3s infinite linear;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
 }
 @keyframes spin {
-    0%,
-    100% { box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0; }
-    12.5% { box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
-    25% { box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
-    37.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em; }
-    50% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em; }
-    62.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em; }
-    75% { box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
-    87.5% { box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; }
+	0%,
+	100% { box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0; }
+	12.5% { box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+	25% { box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+	37.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+	50% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+	62.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em; }
+	75% { box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
+	87.5% { box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; }
 }

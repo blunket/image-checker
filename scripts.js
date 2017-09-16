@@ -1,7 +1,6 @@
 var app = new Vue({
 	el: "#app",
 	data: {
-		result_table: false,
 		images: []
 	}
 })
@@ -24,7 +23,6 @@ function fillTable(imgs) {
 			success: function(data) {
 				data.image.src = window.URL.createObjectURL(img);
 				app.images.push(data);
-				app.result_table = true;
 			}
 		});
 	});

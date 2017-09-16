@@ -50,7 +50,7 @@ if (empty($_SESSION['csrf_token'])) {
 		</div>
 
 		<div id="app">
-			<div class="panel panel-default" id="results" v-if="result_table">
+			<div class="panel panel-default" id="results" v-if="images.length > 0">
 				<table class="table">
 					<thead>
 						<th>image</th>
@@ -100,10 +100,6 @@ if (empty($_SESSION['csrf_token'])) {
 	<script
 		src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
 
 	<script src="https://unpkg.com/vue"></script>

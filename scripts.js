@@ -13,7 +13,6 @@ function fillTable(imgs) {
 		var fd = new FormData();
 		fd.append('file', img);
 
-
 		$.ajax({
 			url:  "process.php",
 			data: fd,
@@ -24,7 +23,6 @@ function fillTable(imgs) {
 			cache: false,
 			success: function(data) {
 				data.image.src = window.URL.createObjectURL(img);
-				console.log(data);
 				app.images.push(data);
 				app.result_table = true;
 			}

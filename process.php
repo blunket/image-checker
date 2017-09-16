@@ -40,7 +40,8 @@ foreach ($images['type'] as $index => $mime_type) {
 	$image      = $images['tmp_name'][$index];
 	$imagesize  = getimagesize($image);
 
-	if (!is_array($imagesize)) {
+	if (!is_array($imagesize) ||
+		!in_array(image_type_to_extension($imagesize[2]), [".jpg", ".jpeg", ".gif", ".png"])) {
 		continue; // invalid image
 	}
 

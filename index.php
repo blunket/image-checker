@@ -35,7 +35,7 @@ if (empty($_SESSION['csrf_token'])) {
 				<p>This tool can provide quick, useful and detailed information about many images at once.</p>
 				<p>How to use:</p>
 				<ol>
-					<li>Drag and drop your images into the box below, or use the button to choose them.</li>
+					<li>Drag and drop your images into the box below.</li>
 					<li>Information about the images will appear in a table below.</li>
 					<li>Click on an image in the table for extra details.</li>
 				</ol>

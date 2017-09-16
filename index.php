@@ -49,16 +49,47 @@ if (empty($_SESSION['csrf_token'])) {
 			</div>
 		</div>
 
-		<div class="panel panel-default" id="results">
-			<table class="table">
-				<thead>
-					<th>image</th>
-					<th>file</th>
-					<th>dimensions (pixels)</th>
-					<th>max print dimensions (inches)</th>
-				</thead>
-				<tbody id="table_datarows"></tbody>
-			</table>
+		<div id="app">
+			<div class="panel panel-default" id="results" v-if="result_table">
+				<table class="table">
+					<thead>
+						<th>image</th>
+						<th>file</th>
+						<th>dimensions (pixels)</th>
+						<th>max print dimensions (inches)</th>
+					</thead>
+					<tbody id="table_datarows">
+						<template v-for="image in images">
+							<tr class="table-info">
+								<td><img v-bind:src="image.image.src" /></td>
+								<td>{{ image.file.name }}</td>
+								<td>{{ image.image.width }} x {{ image.image.height }}</td>
+								<td>{{ image.print.width }} x {{ image.print.height }}</td>
+							</tr>
+							<tr class="table-details">
+								<td colspan="100%">
+									<div class="well">
+										<table>
+											<tr>
+												<td class="key">file name</td>
+												<td class="val">{{ image.file.name }}</td>
+											</tr>
+											<tr>
+												<td class="key">file size</td>
+												<td class="val">{{ image.file.size }}</td>
+											</tr>
+											<tr>
+												<td class="key">color type</td>
+												<td class="val">{{ image.file.color }}</td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
@@ -74,6 +105,8 @@ if (empty($_SESSION['csrf_token'])) {
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
+
+	<script src="https://unpkg.com/vue"></script>
 	<script src="scripts.js"></script>
 </body>
 </html>

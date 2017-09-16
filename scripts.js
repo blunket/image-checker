@@ -1,3 +1,11 @@
+var app = new Vue({
+	el: "#app",
+	data: {
+		result_table: false,
+		images: []
+	}
+})
+
 function fillTable(imgs) {
 	var dpi = 300;
 	$.each(imgs, function(i, img) {
@@ -5,16 +13,20 @@ function fillTable(imgs) {
 		var fd = new FormData();
 		fd.append('file', img);
 
+
 		$.ajax({
 			url:  "process.php",
 			data: fd,
 			type: "POST",
 			contentType: false,
 			processData: false,
+			dataType: "json",
 			cache: false,
 			success: function(data) {
-				$(data).appendTo("#table_datarows");
-				$("#results").show();
+				data.image.src = window.URL.createObjectURL(img);
+				console.log(data);
+				app.images.push(data);
+				app.result_table = true;
 			}
 		});
 	});

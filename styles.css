@@ -8,10 +8,6 @@ label {
 	display: block;
 }
 
-#results {
-	display: none;
-}
-
 #results em {
 	color: #888;
 }

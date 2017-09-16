@@ -40,30 +40,20 @@ function human_filesize($bytes, $decimals = 2) {
 	return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
 }
 
-?>
-<tr class="table-info">
-	<td><img src="data:image/png;base64,<?= $b64 ?>" /></td>
-	<td><?= $image_name ?></td>
-	<td><?= $image_width ?> x <?= $image_height ?></td>
-	<td><?= round($image_width / 300, 2) ?> x <?= round($image_height / 300, 2) ?></td>
-</tr>
-<tr class="table-details">
-	<td colspan="100%">
-		<div class="well">
-			<table>
-				<tr>
-					<td class="key">file name</td>
-					<td class="val"><?= $image_name; ?></td>
-				</tr>
-				<tr>
-					<td class="key">file size</td>
-					<td class="val"><?= human_filesize(filesize($image)); ?></td>
-				</tr>
-				<tr>
-					<td class="key">color type</td>
-					<td class="val"><?= ($imagesize['channels']==4) ? 'CMYK' : 'RGB'; ?></td>
-				</tr>
-			</table>
-		</div>
-	</td>
-</tr>
+$data = [
+	'file' => [
+		'name'  => $image_name,
+		'size'  => human_filesize(filesize($image)),
+		'color' => ($imagesize['channels'] == 4) ? 'CMYK' : 'RGB',
+	],
+	'image' => [
+		'width'  => $image_width,
+		'height' => $image_height,
+	],
+	'print' => [
+		'width'  => round($image_width / 300, 2),
+		'height' => round($image_height / 300, 2),
+	],
+];
+
+echo json_encode($data);

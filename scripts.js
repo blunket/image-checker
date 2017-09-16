@@ -5,27 +5,28 @@ var app = new Vue({
 	}
 })
 
-function fillTable(imgs) {
+function fillTable(files) {
 	var dpi = 300;
-	$.each(imgs, function(i, img) {
+	var fd = new FormData();
 
-		var fd = new FormData();
-		fd.append('file', img);
-
-		$.ajax({
-			url:  "process.php",
-			data: fd,
-			type: "POST",
-			contentType: false,
-			processData: false,
-			dataType: "json",
-			cache: false,
-			success: function(data) {
-				data.image.src = window.URL.createObjectURL(img);
-				app.images.push(data);
-			}
-		});
+	$.each(files, function(i, file) {
+		fd.append('images[]', file);
+		fd.append('blobs[]', window.URL.createObjectURL(file));
 	});
+
+	$.ajax({
+		url:  "process.php",
+		data: fd,
+		type: "POST",
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		cache: false,
+		success: function(data) {
+			app.images = app.images.concat(data);
+		}
+	});
+
 }
 
 $(function() {

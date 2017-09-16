@@ -18,18 +18,6 @@ if (isset($_SERVER['HTTP_CSRFTOKEN'])) {
 	die('No CSRF token.');
 }
 
-// each file will be processed one at a time, so $_FILES should only ever have 1 file
-$image = $_FILES['file']['tmp_name'];
-$image_name = $_FILES['file']['name'];
-
-if(!is_array(getimagesize($image))){
-	die(); // not an image -- no output
-}
-
-$imagesize    = getimagesize($image);
-$image_width  = $imagesize[0];
-$image_height = $imagesize[1];
-
 // source: http://php.net/manual/en/function.filesize.php#106569
 function human_filesize($bytes, $decimals = 2) {
 	$sz = 'BKMGTP';
@@ -37,20 +25,47 @@ function human_filesize($bytes, $decimals = 2) {
 	return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
 }
 
-$data = [
-	'file' => [
-		'name'  => $image_name,
-		'size'  => human_filesize(filesize($image)),
-		'color' => ($imagesize['channels'] == 4) ? 'CMYK' : 'RGB',
-	],
-	'image' => [
-		'width'  => $image_width,
-		'height' => $image_height,
-	],
-	'print' => [
-		'width'  => round($image_width / 300, 2),
-		'height' => round($image_height / 300, 2),
-	],
-];
+$images = $_FILES['images'];
+$output = [];
 
-echo json_encode($data);
+foreach ($images['type'] as $index => $mime_type) {
+	if (!in_array($mime_type, ["image/jpeg", "image/png", "image/gif"])) {
+		continue;
+	}
+	if (!empty($images['error'][$index])) {
+		continue;
+	}
+
+	$image_name = $images['name'][$index];
+	$image      = $images['tmp_name'][$index];
+
+	if(!is_array(getimagesize($image))){
+		continue; // invalid image
+	}
+
+	$imagesize    = getimagesize($image);
+	$image_width  = $imagesize[0];
+	$image_height = $imagesize[1];
+
+	$data = [
+		'file' => [
+			'name'  => $image_name,
+			'size'  => human_filesize(filesize($image)),
+			'color' => ($imagesize['channels'] == 4) ? 'CMYK' : 'RGB',
+		],
+		'image' => [
+			'blob'   => $_REQUEST['blobs'][$index],
+			'width'  => $image_width,
+			'height' => $image_height,
+		],
+		'print' => [
+			'width'  => round($image_width / 300, 2),
+			'height' => round($image_height / 300, 2),
+		],
+	];
+
+	array_push($output, $data);
+
+}
+
+echo json_encode($output);

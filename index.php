@@ -61,7 +61,7 @@ if (empty($_SESSION['csrf_token'])) {
 					<tbody id="table_datarows">
 						<template v-for="image in images">
 							<tr class="table-info">
-								<td><img v-bind:src="image.image.src" /></td>
+								<td><img v-bind:src="image.image.blob" /></td>
 								<td>{{ image.file.name }}</td>
 								<td>{{ image.image.width }} x {{ image.image.height }}</td>
 								<td>{{ image.print.width }} x {{ image.print.height }}</td>

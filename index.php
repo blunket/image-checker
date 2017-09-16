@@ -42,14 +42,14 @@ if (empty($_SESSION['csrf_token'])) {
 			</div>
 		</main>
 
-		<div class="panel panel-default" id="filedrag">
-			<div class="panel-body">
-				<span id="spinner"></span>
-				drag and drop your images here!
-			</div>
-		</div>
-
 		<div id="app">
+			<div class="panel panel-default" v-bind:class="{ 'loading': loading }" id="filedrag">
+				<div class="panel-body">
+					<span id="spinner"></span>
+					<span id="message">drag and drop your images here!</span>
+				</div>
+			</div>
+
 			<div class="panel panel-default" id="results" v-if="images.length > 0">
 				<table class="table">
 					<thead>

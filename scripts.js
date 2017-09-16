@@ -1,13 +1,16 @@
 var app = new Vue({
 	el: "#app",
 	data: {
-		images: []
+		images: [],
+		loading: false
 	}
 })
 
 function fillTable(files) {
 	var dpi = 300;
 	var fd = new FormData();
+
+	app.loading = true;
 
 	$.each(files, function(i, file) {
 		fd.append('images[]', file);
@@ -25,6 +28,8 @@ function fillTable(files) {
 		success: function(data) {
 			app.images = app.images.concat(data);
 		}
+	}).done(function() {
+		app.loading = false;
 	});
 
 }
@@ -50,10 +55,12 @@ $(function() {
 			})
 			.on('drop', function(e) {
 				e.preventDefault();
-				let files = e.originalEvent.dataTransfer.files;
-
 				$(this).removeClass("dragging");
-				fillTable(files);
+
+				var files = e.originalEvent.dataTransfer.files;
+				if (files.length > 0) {
+					fillTable(files);
+				}
 
 			});
 	}

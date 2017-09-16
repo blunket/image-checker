@@ -22,9 +22,6 @@ if (isset($_SERVER['HTTP_CSRFTOKEN'])) {
 $image = $_FILES['file']['tmp_name'];
 $image_name = $_FILES['file']['name'];
 
-$imageData = file_get_contents($image);
-$b64 = base64_encode($imageData);
-
 if(!is_array(getimagesize($image))){
 	die(); // not an image -- no output
 }

@@ -38,13 +38,13 @@ foreach ($images['type'] as $index => $mime_type) {
 
 	$image_name = $images['name'][$index];
 	$image      = $images['tmp_name'][$index];
+	$imagesize  = getimagesize($image);
 
-	if(!is_array(getimagesize($image))){
+	if (!is_array($imagesize)) {
 		continue; // invalid image
 	}
 
 	$filesize     = $images['size'][$index];
-	$imagesize    = getimagesize($image);
 	$image_width  = $imagesize[0];
 	$image_height = $imagesize[1];
 

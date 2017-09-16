@@ -43,6 +43,7 @@ foreach ($images['type'] as $index => $mime_type) {
 		continue; // invalid image
 	}
 
+	$filesize     = $images['size'][$index];
 	$imagesize    = getimagesize($image);
 	$image_width  = $imagesize[0];
 	$image_height = $imagesize[1];
@@ -50,7 +51,7 @@ foreach ($images['type'] as $index => $mime_type) {
 	$data = [
 		'file' => [
 			'name'  => $image_name,
-			'size'  => human_filesize(filesize($image)),
+			'size'  => human_filesize($filesize),
 			'color' => ($imagesize['channels'] == 4) ? 'CMYK' : 'RGB',
 		],
 		'image' => [

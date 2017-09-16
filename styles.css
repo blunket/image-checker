@@ -1,7 +1,10 @@
 body {
-	background-color: #fafafa;
+	background-color: #f4f4f4;
 	font-family: "Lato";
 	padding-bottom: 34px;
+}
+.panel-default {
+	border-color: #aaa;
 }
 
 label {

@@ -33,10 +33,10 @@ function fillTable(files) {
 
 	app.loading = true;
 
-	$.each(files, function(i, file) {
-		fd.append('images[]', file);
-		fd.append('blobs[]', window.URL.createObjectURL(file));
-	});
+	for (var i = 0; i < files.length; i++) {
+		fd.append('images[]', files[i]);
+		fd.append('blobs[]', window.URL.createObjectURL(files[i]));
+	}
 
 	$.ajax({
 		url:  "process.php",

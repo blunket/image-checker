@@ -2,7 +2,28 @@ var app = new Vue({
 	el: "#app",
 	data: {
 		images: [],
-		loading: false
+		loading: false,
+		dragging: false,
+		fileAPI: window.File && window.FileList && window.FileReader
+	},
+	methods: {
+		dragover: function(e) {
+			e.preventDefault();
+			this.dragging = true;
+		},
+		dragend: function(e) {
+			e.preventDefault();
+			this.dragging = false;
+		},
+		drop: function(e) {
+			e.preventDefault();
+			this.dragging = false;
+
+			var files = e.dataTransfer.files;
+			if (files.length > 0) {
+				fillTable(files);
+			}
+		}
 	}
 })
 
@@ -41,30 +62,6 @@ $(function() {
 			'CsrfToken': $('meta[name="csrf-token"]').attr('content')
 		}
 	});
-
-	if (window.File && window.FileList && window.FileReader) {
-		$("#filedrag")
-			.show()
-			.on('dragover', function(e) {
-				e.preventDefault();
-				$(this).addClass("dragging");
-			})
-			.on('dragend dragleave', function(e) {
-				e.preventDefault();
-				$(this).removeClass("dragging");
-			})
-			.on('drop', function(e) {
-				e.preventDefault();
-				$(this).removeClass("dragging");
-
-				var files = e.originalEvent.dataTransfer.files;
-				if (files.length > 0) {
-					fillTable(files);
-				}
-
-			});
-	}
-
 
 	$(document).on('click', '#results .table-info', function(e) {
 		$(this).toggleClass("expand");

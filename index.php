@@ -43,7 +43,13 @@ if (empty($_SESSION['csrf_token'])) {
 		</main>
 
 		<div id="app">
-			<div class="panel panel-default" v-bind:class="{ 'loading': loading }" id="filedrag">
+			<div class="panel panel-default" id="filedrag"
+				v-if="fileAPI"
+				v-on:dragover="dragover($event)"
+				v-on:dragend="dragend($event)"
+				v-on:dragleave="dragend($event)"
+				v-on:drop="drop($event)"
+				v-bind:class="{ 'loading': loading, 'dragging': dragging }">
 				<div class="panel-body">
 					<span id="spinner"></span>
 					<span id="message">drag and drop your images here!</span>

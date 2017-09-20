@@ -27,6 +27,15 @@ var app = new Vue({
 	}
 })
 
+var filepicker = document.getElementById("filepicker");
+filepicker.addEventListener('change', function(e){
+	var files = filepicker.files;
+	if (files.length > 0) {
+		fillTable(files);
+		filepicker.value = "";
+	}
+})
+
 function fillTable(files) {
 	var dpi = 300;
 	var fd = new FormData();

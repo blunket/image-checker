@@ -56,7 +56,15 @@ if (empty($_SESSION['csrf_token'])) {
 				</div>
 			</div>
 
-			<div class="panel panel-default" id="results" v-if="images.length > 0">
+			<p>... or choose them manually:</p>
+			<label class="btn btn-primary btn-file">
+				Choose Images
+				<input type="file" id="filepicker" multiple="multiple"
+					accept="image/*">
+			</label>
+
+			<div class="panel panel-default" id="results"
+				v-if="images.length > 0">
 				<table class="table">
 					<thead>
 						<th>image</th>

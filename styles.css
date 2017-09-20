@@ -7,8 +7,12 @@ body {
 	border-color: #aaa;
 }
 
-label {
-	display: block;
+#filepicker {
+	display: none;
+}
+
+.btn-file {
+	margin-bottom: 20px;
 }
 
 #results em {

@@ -113,11 +113,6 @@ if (empty($_SESSION['csrf_token'])) {
 		<small>© 2017 <a href="https://andrewsiegman.com/" target="_blank">andrew siegman</a> &amp; <a href="http://www.nickdrakedesign.com" target="_blank">nick drake</a></small>
 	</div>
 
-	<script
-		src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous"></script>
-
 	<script src="https://unpkg.com/vue"></script>
 	<script src="scripts.js"></script>
 </body>

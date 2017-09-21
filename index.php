@@ -74,7 +74,9 @@ if (empty($_SESSION['csrf_token'])) {
 					</thead>
 					<tbody id="table_datarows">
 						<template v-for="image in images">
-							<tr class="table-info">
+							<tr class="table-info"
+								v-bind:class="{ 'expand': image.expanded }"
+								v-on:click="image.expanded = !image.expanded">
 								<td><img v-bind:src="image.image.blob" /></td>
 								<td>{{ image.file.name }}</td>
 								<td>{{ image.image.width }} x {{ image.image.height }}</td>

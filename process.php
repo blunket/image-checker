@@ -64,6 +64,7 @@ foreach ($images['type'] as $index => $mime_type) {
 			'width'  => round($image_width / 300, 2),
 			'height' => round($image_height / 300, 2),
 		],
+		'expanded' => false,
 	];
 
 	array_push($output, $data);

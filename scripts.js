@@ -64,11 +64,3 @@ function fillTable(files) {
 	xhr.send(fd);
 
 }
-
-$(function() {
-
-	$(document).on('click', '#results .table-info', function(e) {
-		$(this).toggleClass("expand");
-	});
-
-});

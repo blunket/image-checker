@@ -47,30 +47,25 @@ function fillTable(files) {
 		fd.append('blobs[]', window.URL.createObjectURL(files[i]));
 	}
 
-	$.ajax({
-		url:  "process.php",
-		data: fd,
-		type: "POST",
-		contentType: false,
-		processData: false,
-		dataType: "json",
-		cache: false,
-		success: function(data) {
-			app.images = app.images.concat(data);
-		}
-	}).done(function() {
+
+
+	var xhr  = new XMLHttpRequest();
+	var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
+	xhr.open('POST', 'process.php');
+	xhr.setRequestHeader('CsrfToken', csrf);
+	xhr.onload = function() {
 		app.loading = false;
-	});
+		if (xhr.status === 200) {
+			var data = JSON.parse(xhr.responseText);
+			app.images = app.images.concat(data)
+		}
+	}
+	xhr.send(fd);
 
 }
 
 $(function() {
-
-	$.ajaxSetup({
-		headers : {
-			'CsrfToken': $('meta[name="csrf-token"]').attr('content')
-		}
-	});
 
 	$(document).on('click', '#results .table-info', function(e) {
 		$(this).toggleClass("expand");

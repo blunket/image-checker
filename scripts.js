@@ -47,8 +47,6 @@ function fillTable(files) {
 		fd.append('blobs[]', window.URL.createObjectURL(files[i]));
 	}
 
-
-
 	var xhr  = new XMLHttpRequest();
 	var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
@@ -57,10 +55,18 @@ function fillTable(files) {
 	xhr.onload = function() {
 		app.loading = false;
 		if (xhr.status === 200) {
-			var data = JSON.parse(xhr.responseText);
-			app.images = app.images.concat(data)
+			responseHandler(xhr.responseText);
 		}
 	}
 	xhr.send(fd);
 
+}
+
+function responseHandler(response) {
+	var data = JSON.parse(response);
+	if (data.success === true) {
+		app.images = app.images.concat(data.data);
+	} else {
+		console.log(data.reason);
+	}
 }

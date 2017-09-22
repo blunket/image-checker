@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 // csrf token check: https://stackoverflow.com/questions/37912937/how-to-send-secure-ajax-requests-with-php-and-jquery
 session_start();
 if (empty($_SESSION['csrf_token'])) {
@@ -10,12 +12,22 @@ if (empty($_SESSION['csrf_token'])) {
 	}
 }
 
-if (isset($_SERVER['HTTP_CSRFTOKEN'])) {
-	if ($_SERVER['HTTP_CSRFTOKEN'] !== $_SESSION['csrf_token']) {
-		die('Wrong CSRF token.');
-	}
-} else {
-	die('No CSRF token.');
+if (!isset($_SERVER['HTTP_CSRFTOKEN'])) {
+	$response = [
+		"success" => false,
+		"reason"  => "CSRF token missing.",
+	];
+	echo json_encode($response);
+	die(1);
+}
+
+if ($_SERVER['HTTP_CSRFTOKEN'] !== $_SESSION['csrf_token']) {
+	$response = [
+		"success" => false,
+		"reason"  => "Invalid CSRF token.",
+	];
+	echo json_encode($response);
+	die(1);
 }
 
 // source: http://php.net/manual/en/function.filesize.php#106569
@@ -71,4 +83,18 @@ foreach ($images['type'] as $index => $mime_type) {
 
 }
 
-echo json_encode($output);
+if (empty($output)) {
+	$response = [
+		"success" => false,
+		"reason"  => "No images processed.",
+	];
+	echo json_encode($response);
+	die(1);
+}
+
+$response = [
+	"success" => true,
+	"data"    => $output,
+];
+echo json_encode($response);
+exit();

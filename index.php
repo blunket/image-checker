@@ -98,6 +98,10 @@ if (empty($_SESSION['csrf_token'])) {
 												<td class="key">color type</td>
 												<td class="val">{{ image.file.color }}</td>
 											</tr>
+											<tr>
+												<td class="key">file type</td>
+												<td class="val">{{ image.file.type }}</td>
+											</tr>
 										</table>
 									</div>
 								</td>

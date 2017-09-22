@@ -66,6 +66,7 @@ foreach ($images['type'] as $index => $mime_type) {
 			'name'  => $image_name,
 			'size'  => human_filesize($filesize),
 			'color' => ($imagesize['channels'] == 4) ? 'CMYK' : 'RGB',
+			'type'  => $mime_type,
 		],
 		'image' => [
 			'blob'   => $_REQUEST['blobs'][$index],

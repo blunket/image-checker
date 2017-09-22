@@ -117,7 +117,11 @@ if (empty($_SESSION['csrf_token'])) {
 		<small>© 2017 <a href="https://andrewsiegman.com/" target="_blank">andrew siegman</a> &amp; <a href="http://www.nickdrakedesign.com" target="_blank">nick drake</a></small>
 	</div>
 
-	<script src="https://unpkg.com/vue"></script>
+	<?php if (getenv("PHP_ENV") === 'development') { ?>
+		<script src="https://unpkg.com/vue"></script>
+	<?php } else { ?>
+		<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<?php } ?>
 	<script src="scripts.js"></script>
 </body>
 </html>

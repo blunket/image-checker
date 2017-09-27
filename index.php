@@ -24,17 +24,6 @@ set_csrf_token();
 			<h1>Image Upload Checker</h1>
 			<p>Here you can find out if your images are useable.</p>
 		</div>
-		<main class="panel panel-default">
-			<div class="panel-body">
-				<p>This tool can provide quick, useful and detailed information about many images at once.</p>
-				<p>How to use:</p>
-				<ol>
-					<li>Drag and drop your images into the box below.</li>
-					<li>Information about the images will appear in a table below.</li>
-					<li>Click on an image in the table for extra details.</li>
-				</ol>
-			</div>
-		</main>
 
 		<div id="app">
 

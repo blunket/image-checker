@@ -37,6 +37,21 @@ set_csrf_token();
 		</main>
 
 		<div id="app">
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table">
+						<caption class="text-left">Settings</caption>
+						<tbody>
+							<tr>
+								<td>Print DPI</td>
+								<td><input v-model="dpi" min="1" type="number"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
 			<div class="panel panel-default" id="filedrag"
 				v-if="fileAPI"
 				v-on:dragover="dragover($event)"
@@ -74,7 +89,7 @@ set_csrf_token();
 								<td><img v-bind:src="image.image.blob" /></td>
 								<td>{{ image.file.name }}</td>
 								<td>{{ image.image.width }} x {{ image.image.height }}</td>
-								<td>{{ image.print.width }} x {{ image.print.height }}</td>
+								<td>{{ (image.image.width / dpi).toFixed(2) }} x {{ (image.image.height / dpi).toFixed(2) }}</td>
 							</tr>
 							<tr class="table-details">
 								<td colspan="100%">

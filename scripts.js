@@ -4,6 +4,7 @@ var app = new Vue({
 		images: [],
 		loading: false,
 		dragging: false,
+		dpi: 300,
 		fileAPI: window.File && window.FileList && window.FileReader
 	},
 	methods: {
@@ -37,7 +38,6 @@ filepicker.addEventListener('change', function(e){
 })
 
 function fillTable(files) {
-	var dpi = 300;
 	var fd = new FormData();
 
 	app.loading = true;

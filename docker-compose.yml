@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+        php:
+                build: ./docker/php
+                volumes:
+                        - ./:/var/www/html
+                ports:
+                        - '80:80'
+                
+                          

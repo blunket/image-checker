@@ -111,9 +111,6 @@ set_csrf_token();
 		</div>
 	</div>
 
-	<div id="copyright">
-		<small>© 2017 <a href="https://andrewsiegman.com/" target="_blank">andrew siegman</a> &amp; <a href="http://www.nickdrakedesign.com" target="_blank">nick drake</a></small>
-	</div>
 
 	<?php if (getenv("PHP_ENV") === 'development') { ?>
 		<script src="https://unpkg.com/vue"></script>

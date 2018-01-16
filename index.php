@@ -23,6 +23,7 @@ set_csrf_token();
 		<div class="page-header">
 			<h1>Image Upload Checker</h1>
 			<p>Here you can find out if your images are useable.</p>
+			<p><a href="https://github.com/blunket/image-checker/">View on GitHub</a></p>
 		</div>
 
 		<div id="app">

@@ -1,5 +1,6 @@
 # Image Checker
 This is a web app to aid in checking image sizes and stuff.
+
 View it in action: [https://cloud.andrewsiegman.com/tools/image-checker](https://cloud.andrewsiegman.com/tools/image-checker)
 
 ## Development
